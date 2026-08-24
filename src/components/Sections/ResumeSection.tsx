@@ -36,14 +36,6 @@ export const ResumeSection: React.FC = () => {
           >
             github
           </a>
-          <a
-            href="/AmanMeenaResume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
-          >
-            resume.pdf ↗
-          </a>
         </div>
       </div>
 

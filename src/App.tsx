@@ -19,13 +19,25 @@ const AppContent = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  return (
-    <div className="min-h-screen flex flex-col justify-between">
-      <div>
-        <TopNav />
-        <main className={`max-w-2xl mx-auto px-5 sm:px-6 ${isHome ? 'pt-12 sm:pt-16' : 'pt-2'}`}>
+  if (isHome) {
+    return (
+      <div className="h-screen max-h-screen overflow-hidden flex flex-col justify-between max-w-xl sm:max-w-2xl mx-auto px-5 sm:px-6 py-6 sm:py-8">
+        <main className="h-full flex-1">
           <Routes>
             <Route path="/" element={<HeroSection />} />
+          </Routes>
+        </main>
+        <Analytics />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col justify-between">
+      <div className="flex-1">
+        <TopNav />
+        <main className="max-w-xl sm:max-w-2xl mx-auto px-5 sm:px-6 py-6 sm:py-10">
+          <Routes>
             <Route path="/projects" element={<ProjectsSection />} />
             <Route path="/writings" element={<WritingsSection />} />
             <Route path="/timeline" element={<TimelineSection />} />
@@ -35,7 +47,7 @@ const AppContent = () => {
           </Routes>
         </main>
       </div>
-      <div className="max-w-2xl mx-auto px-5 sm:px-6 w-full pb-10 sm:pb-12">
+      <div className="max-w-xl sm:max-w-2xl mx-auto px-5 sm:px-6 w-full">
         <Footer />
       </div>
       <Analytics />
