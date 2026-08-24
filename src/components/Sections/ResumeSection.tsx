@@ -187,7 +187,7 @@ export const ResumeSection: React.FC = () => {
 
         <div className="space-y-1">
           <a
-            href="https://RexxLudwig.github.io/kojima/"
+            href="https://rexxAman.github.io/kojima/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-base font-bold text-blue-600 hover:underline block"

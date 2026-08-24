@@ -55,7 +55,7 @@ const TIMELINE_DATA: Record<string, TimelineItem[]> = {
       year: '2025',
       title: 'Built Bodo Interview Guidance & Resume Builder',
       detail: 'Feb 2025 · Next.js, Supabase, Tailwind CSS',
-      link: 'https://github.com/RexxLudwig/Bodo',
+      link: 'https://github.com/rexxAman/Bodo',
     },
   ],
   '2024': [
@@ -77,7 +77,7 @@ const TIMELINE_DATA: Record<string, TimelineItem[]> = {
       year: '2024',
       title: 'Launched Kojima Open-Source Tool Catalog',
       detail: 'Jun 2024 · Automated via GitHub Actions & Pages',
-      link: 'https://RexxLudwig.github.io/kojima/',
+      link: 'https://rexxAman.github.io/kojima/',
     },
   ],
   '2023': [

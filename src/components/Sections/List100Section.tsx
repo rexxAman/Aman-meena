@@ -36,7 +36,7 @@ const GOALS_LIST: GoalItem[] = [
   { id: 27, text: 'Travel to 10+ countries exploring tech communities and nature', done: false },
   { id: 28, text: 'Achieve sub-20 minute 5K run', done: false },
   { id: 29, text: 'Open-source a lightweight vector search library in C++/Rust', done: false },
-  { id: 30, text: 'Maintain a digital garden of learnings and notes for 5+ years', done: true },
+  { id: 30, text: 'Maintain a digital space of learnings and notes for 5+ years', done: true },
   { id: 31, text: 'Visit Japan and explore Tokyo tech districts', done: false },
   { id: 32, text: 'Build a robot or drone with custom hardware and computer vision', done: false },
   { id: 33, text: 'Learn to play a musical instrument', done: false },

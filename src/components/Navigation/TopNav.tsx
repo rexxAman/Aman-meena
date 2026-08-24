@@ -25,7 +25,7 @@ export const TopNav: React.FC = () => {
           to="/"
           className="text-lg sm:text-xl font-bold text-gray-900 hover:text-black no-underline hover:no-underline flex items-center gap-2 tracking-tight"
         >
-          <span>Aman's Garden</span>
+          <span>Aman's Space</span>
           <span className="text-xl">🌱</span>
         </Link>
 

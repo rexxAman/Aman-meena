@@ -10,7 +10,7 @@ export const HeroSection: React.FC = () => {
         {/* Title & Bio */}
         <div className="space-y-5">
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 flex items-center gap-2">
-            <span>Aman's Garden</span>
+            <span>Aman's Space</span>
             <span className="text-2xl">🌱</span>
           </h1>
           <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
