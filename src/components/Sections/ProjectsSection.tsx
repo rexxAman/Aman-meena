@@ -1,57 +1,97 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { PROJECTS } from '../../data/projects';
-import { useSmoothScroll } from '../../hooks/useSmoothScroll';
-import { ProjectCarousel } from '../Projects/ProjectCarousel';
-import { ProjectDetails } from '../Projects/ProjectDetails';
 
 export const ProjectsSection: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { progress, activeIndex } = useSmoothScroll(sectionRef, PROJECTS.length);
+  const [selectedTag, setSelectedTag] = useState<string>('all');
+
+  // Extract all normalized tags
+  const allTags = [
+    'all',
+    'ai',
+    'python',
+    'langchain',
+    'rag',
+    'pytorch',
+    'next.js',
+    'fastapi',
+    'typescript',
+    'react.js',
+  ];
+
+  const filteredProjects = selectedTag === 'all'
+    ? PROJECTS
+    : PROJECTS.filter((p) =>
+        p.tags.some((t) =>
+          t.toLowerCase().replace(/[^a-z0-9]/g, '') === selectedTag.toLowerCase().replace(/[^a-z0-9]/g, '')
+        ) ||
+        p.title.toLowerCase().includes(selectedTag.toLowerCase()) ||
+        p.description.toLowerCase().includes(selectedTag.toLowerCase())
+      );
 
   return (
-    <section
-      ref={sectionRef}
-      id="projects"
-      className="relative z-10"
-      style={{
-        // Each project gets ~100vh of scroll distance
-        height: `${PROJECTS.length * 100}vh`,
-      }}
-    >
-      {/* Sticky viewport — stays fixed while user scrolls through the tall section */}
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-start overflow-hidden pt-24 sm:pt-32 pb-10 px-4">
-
-        {/* Carousel wrapper to ensure it fits and shrinks if needed */}
-        <div className="flex-1 w-full flex items-center justify-center min-h-0 relative">
-          <ProjectCarousel
-            projects={PROJECTS}
-            progress={progress}
-            activeIndex={activeIndex}
-          />
-        </div>
-
-        {/* Details / progress indicator */}
-        <div className="mt-6 md:mt-8 flex-shrink-0">
-          <ProjectDetails
-            project={PROJECTS[activeIndex]}
-            index={activeIndex}
-            total={PROJECTS.length}
-          />
-        </div>
-
-        {/* Scroll hint */}
-        {progress < 0.05 && (
-          <div
-            className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-opacity duration-700 pointer-events-none"
-            style={{ opacity: 1 - progress * 20 }}
-          >
-            <span className="font-mono text-[10px] uppercase tracking-widest text-[#8E8E8E]">
-              Scroll to explore
-            </span>
-            <div className="w-px h-6 sm:h-8 bg-gradient-to-b from-[#FF6B3D]/40 to-transparent" />
-          </div>
-        )}
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="space-y-2">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Projects</h1>
+        <p className="text-gray-600 text-sm sm:text-base">
+          Notes and build logs from ongoing/finished projects.
+        </p>
       </div>
-    </section>
+
+      {/* Filter Tags */}
+      <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2 text-sm">
+        {allTags.map((tag) => {
+          const isActive = selectedTag === tag;
+          return (
+            <button
+              key={tag}
+              onClick={() => setSelectedTag(tag)}
+              className={`cursor-pointer transition-colors bg-transparent border-0 p-0 text-sm ${
+                isActive
+                  ? 'text-gray-900 underline underline-offset-4 decoration-gray-900 font-medium'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              {tag}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Projects List */}
+      <div className="space-y-6 pt-2">
+        {filteredProjects.map((project) => {
+          const primaryLink = project.link || project.github;
+          const formattedLink = primaryLink
+            ? (primaryLink.startsWith('http') ? primaryLink : `https://${primaryLink}`)
+            : undefined;
+
+          return (
+            <div key={project.title} className="space-y-1">
+              <div>
+                {formattedLink ? (
+                  <a
+                    href={formattedLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-base font-normal text-blue-600 hover:underline inline-block"
+                  >
+                    {project.title}
+                  </a>
+                ) : (
+                  <span className="text-base font-normal text-gray-900 inline-block">
+                    {project.title}
+                  </span>
+                )}
+              </div>
+
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {project.description}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 };

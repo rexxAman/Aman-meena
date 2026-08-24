@@ -1,0 +1,21 @@
+# Aman Meena — Full Stack Developer & AI Systems Engineer
+
+## Summary
+Aman Meena is a Full Stack Developer & AI Systems Engineer based in New Delhi, India.
+Specializes in production RAG systems, agentic AI workflows (LangGraph, LangChain), scalable web architecture (React, Next.js, FastAPI, TypeScript, Python), and distributed system design.
+
+## Experience
+- Accenture (Software Intern, Dec 2025 - May 2026): Analyzed 200+ ServiceNow ITSM tickets (~55% volume reduction triage). Earned P3 top-tier MyCompetency rating across Agentic AI, RAG, AWS, and Azure.
+- DGFT, Ministry of Commerce and Industry (AI Intern, Jun 2025 - Jul 2025): Built and deployed enterprise RAG chatbot indexing 100+ policy documents (2K text chunks), achieving 75-85% retrieval@3 and boosting policy-aligned answer accuracy from 54% to 81%.
+- DIPR, DRDO (Research Intern, Jul 2024 - Aug 2024): Designed multimodal deception-detection pipeline (DistilBERT + librosa + Random Forest late-fusion ensemble) achieving 81% accuracy on ~1K labeled samples.
+
+## Key Skills
+- Languages: Python, TypeScript, JavaScript, SQL, C/C++
+- AI & LLMs: LangGraph, LangChain, RAG Architectures, ChromaDB, MCP Protocol, Prompt Engineering, PyTorch
+- Full Stack: React, Next.js, Tailwind CSS, FastAPI, PostgreSQL, MongoDB, Redis, Docker, AWS
+
+## Contact & Links
+- Email: meenaaman581@gmail.com
+- GitHub: https://github.com/Amanmeena0
+- LinkedIn: https://www.linkedin.com/in/aman-meena-11326a395/
+- Resume: https://drive.google.com/file/d/15gF3wKZ2mEMCrzhPAm1RC0uhFUc5bRuy/view
