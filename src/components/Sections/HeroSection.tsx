@@ -67,7 +67,7 @@ export const HeroSection: React.FC = () => {
           </h2>
           <div className="flex items-center gap-4 text-gray-700">
             <a
-              href="https://github.com/Amanmeena0"
+              href="https://github.com/rexxAman"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-gray-900 transition-colors"
