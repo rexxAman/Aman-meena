@@ -31,7 +31,9 @@ export const TopNav: React.FC = () => {
 
         <nav className="flex items-center gap-4 sm:gap-6 text-sm">
           {navItems.map((item) => {
-            const isActive = currentPath === item.href;
+            const isActive =
+              currentPath === item.href ||
+              (item.href !== '/' && currentPath.startsWith(`${item.href}/`));
             return (
               <Link
                 key={item.name}
