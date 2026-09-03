@@ -16,18 +16,6 @@ export const TimelineSection: React.FC = () => {
         <p className="text-gray-600 text-sm sm:text-base">
           A running log of moments, milestones, and little proofs of progress.
         </p>
-
-        {/* Legend showing visual differentiation */}
-        <div className="flex items-center gap-4 pt-1 text-xs text-gray-500">
-          <span className="inline-flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-blue-600 inline-block" />
-            <span>has writeup / project link</span>
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full border border-gray-400 bg-transparent inline-block" />
-            <span>milestone note</span>
-          </span>
-        </div>
       </div>
 
       {/* Year Tabs */}
@@ -51,59 +39,46 @@ export const TimelineSection: React.FC = () => {
       </div>
 
       {/* Timeline List with Vertical Connected Line */}
-      <div className="relative pl-6 space-y-6 pt-2 border-l border-gray-200">
+      <div className="relative space-y-6 pt-2">
+        {/* Continuous vertical line centered precisely with the bullet circles */}
+        <div className="absolute left-[3.5px] top-2 bottom-2 w-[1px] bg-gray-200 pointer-events-none" />
+
         {items.map((item) => {
           const hasLink = Boolean(item.link);
           const isInternal = item.link?.startsWith('/');
 
           return (
-            <div key={item.id} className="relative flex items-baseline gap-2 text-sm sm:text-base">
-              {/* Timeline Dot: solid blue for linked, hollow gray for unlinked */}
-              {hasLink ? (
-                <span
-                  className="absolute -left-[30px] top-[7px] w-2 h-2 rounded-full bg-blue-600 ring-4 ring-[#faf9f6]"
-                  title="Has link"
-                />
-              ) : (
-                <span
-                  className="absolute -left-[30px] top-[7px] w-2 h-2 rounded-full border border-gray-300 bg-[#faf9f6]"
-                  title="Milestone note"
-                />
-              )}
+            <div key={item.id} className="relative flex items-start gap-4">
+              {/* Hollow Circle Bullet: 8x8px at left-0, center is exactly 4.0px */}
+              <span className="w-2 h-2 rounded-full border border-gray-400 bg-[#faf9f6] shrink-0 mt-[7px] relative z-10" />
 
-              <div className="flex flex-wrap items-baseline gap-x-2">
+              <div className="flex flex-wrap items-baseline gap-x-2 text-sm sm:text-base leading-relaxed">
                 {hasLink ? (
                   isInternal ? (
                     <Link
                       to={item.link!}
-                      className="text-blue-600 hover:underline font-normal inline-flex items-center gap-1 group"
+                      className="text-blue-600 hover:underline font-normal inline"
                     >
-                      <span>{item.title}</span>
-                      <span className="text-xs text-blue-400 group-hover:text-blue-600 transition-colors">
-                        ↗
-                      </span>
+                      {item.title}
                     </Link>
                   ) : (
                     <a
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline font-normal inline-flex items-center gap-1 group"
+                      className="text-blue-600 hover:underline font-normal inline"
                     >
-                      <span>{item.title}</span>
-                      <span className="text-xs text-blue-400 group-hover:text-blue-600 transition-colors">
-                        ↗
-                      </span>
+                      {item.title}
                     </a>
                   )
                 ) : (
-                  <span className="text-gray-900 font-normal cursor-default select-text">
+                  <span className="text-gray-900 font-normal inline">
                     {item.title}
                   </span>
                 )}
 
                 <span className="text-gray-400">—</span>
-                <span className="text-gray-500 text-sm">{item.detail}</span>
+                <span className="text-gray-600 text-sm">{item.detail}</span>
               </div>
             </div>
           );
