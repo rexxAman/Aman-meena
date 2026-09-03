@@ -404,25 +404,5 @@ export const PROJECTS: Project[] = [
     tags: ["JavaScript", "Web Development", "State Machine", "UI/UX", "Games"],
     github: "https://github.com/rexxAman/RPS"
   },
-  {
-    slug: "skybox",
-    title: "SkyBox | 3D Interactive Canvas Environment",
-    description: "An interactive 3D WebGL skybox environment featuring customizable cube textures, camera navigation, and dynamic lighting.",
-    longDescription: "SkyBox explores 3D space rendering in the browser using WebGL and Canvas technologies, providing an immersive panoramic environment with 360-degree orbit controls.",
-    why: "I built this to explore 3D rendering mathematics, projection geometry, and WebGL scene lighting in modern web interfaces.",
-    architecture: [
-      "WebGL Scene Pipeline: Cube-map texture mapping applied to a surrounding skybox geometry.",
-      "Orbit Camera Controls: Smooth mouse drag and touch rotation with damping effects.",
-      "Lighting & Shader Pipeline: Ambient and directional lighting calculations for depth rendering."
-    ],
-    features: [
-      "360-degree immersive camera rotation and zoom controls",
-      "Seamless cubemap texture projection",
-      "High-performance WebGL rendering with smooth frame rates",
-      "Responsive canvas adapting to all display resolutions"
-    ],
-    tags: ["TypeScript", "WebGL", "Three.js", "3D Graphics", "Creative Coding"],
-    github: "https://github.com/rexxAman/Sky-box"
-  }
 ];
 

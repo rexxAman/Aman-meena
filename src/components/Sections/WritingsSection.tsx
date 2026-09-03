@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { WRITINGS } from '../../data/writings';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 8;
 
 export const WritingsSection: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);

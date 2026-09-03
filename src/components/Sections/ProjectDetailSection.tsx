@@ -68,6 +68,19 @@ export const ProjectDetailSection: React.FC = () => {
         </div>
       </div>
 
+      {/* Project Cover Image */}
+      {project.image && (
+        <div className="overflow-hidden rounded-lg border border-gray-200/80 bg-gray-50">
+          <img
+            src={project.image}
+            alt={project.title}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-auto max-h-[420px] object-cover object-center"
+          />
+        </div>
+      )}
+
       {/* Overview / Deep Dive */}
       {project.longDescription && (
         <div className="space-y-2">
