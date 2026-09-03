@@ -4,6 +4,7 @@ import { HeroSection } from '@/src/components/Sections/HeroSection';
 import { ProjectsSection } from '@/src/components/Sections/ProjectsSection';
 import { ProjectDetailSection } from '@/src/components/Sections/ProjectDetailSection';
 import { WritingsSection } from '@/src/components/Sections/WritingsSection';
+import { WritingDetailSection } from '@/src/components/Sections/WritingDetailSection';
 import { TimelineSection } from '@/src/components/Sections/TimelineSection';
 import { LibrarySection } from '@/src/components/Sections/LibrarySection';
 import { List100Section } from '@/src/components/Sections/List100Section';
@@ -41,6 +42,7 @@ const AppContent = () => {
             <Route path="/projects" element={<ProjectsSection />} />
             <Route path="/projects/:slug" element={<ProjectDetailSection />} />
             <Route path="/writings" element={<WritingsSection />} />
+            <Route path="/writings/:slug" element={<WritingDetailSection />} />
             <Route path="/timeline" element={<TimelineSection />} />
             <Route path="/library" element={<LibrarySection />} />
             <Route path="/list100" element={<List100Section />} />

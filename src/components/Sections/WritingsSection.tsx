@@ -1,46 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { WRITINGS } from '../../data/writings';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-interface Writing {
-  date: string;
-  title: string;
-  description: string;
-  link?: string;
-}
-
-const WRITINGS: Writing[] = [
-  {
-    date: 'AUG 26',
-    title: 'Building Production-Grade RAG: From Chunks to Multi-Agent Graphs',
-    description: 'A deep dive into chunking heuristics, retrieval@3 optimization, rerankers, and LangGraph multi-node state cycles.',
-  },
-  {
-    date: 'MAY 26',
-    title: 'Multimodal Lie Detection: Fusing Speech Acoustic Features & DistilBERT',
-    description: 'Lessons from designing late-fusion Random Forest ensembles for deception detection at DRDO.',
-  },
-  {
-    date: 'APR 26',
-    title: 'Tokens Are Cheap. Thinking Isn\'t',
-    description: 'Why latency, prompt distillation, and architectural guardrails matter more than raw LLM context size.',
-  },
-  {
-    date: 'MAR 26',
-    title: 'Designing Reactive Microservices with FastAPI & WebSockets',
-    description: 'Patterns for real-time streaming LLM outputs, background Celery workers, and low-latency client sockets.',
-  },
-  {
-    date: 'JAN 26',
-    title: 'Notes from Enterprise ITSM Incident Triage',
-    description: 'How analyzing 200+ ServiceNow tickets helped identify failure patterns driving 55% of recurring downtime.',
-  },
-  {
-    date: 'DEC 25',
-    title: 'The Model Context Protocol (MCP) in Practice',
-    description: 'Structuring tool-calling schemas, rate limiting, and session safety when connecting LLMs to external systems.',
-  },
-];
+const ITEMS_PER_PAGE = 4;
 
 export const WritingsSection: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  const totalPages = Math.ceil(WRITINGS.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedWritings = WRITINGS.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -53,15 +29,18 @@ export const WritingsSection: React.FC = () => {
 
       {/* Writings List */}
       <div className="space-y-8 pt-2">
-        {WRITINGS.map((item) => (
-          <div key={item.title} className="space-y-1">
+        {paginatedWritings.map((item) => (
+          <div key={item.slug} className="space-y-1 group">
             <div className="text-xs font-bold text-gray-400 uppercase tracking-wider">
-              {item.date}
+              {item.date} · {item.readTime}
             </div>
             <div>
-              <span className="text-base font-normal text-blue-600 hover:underline cursor-pointer">
+              <Link
+                to={`/writings/${item.slug}`}
+                className="text-base font-normal text-blue-600 hover:underline inline-block"
+              >
                 {item.title}
-              </span>
+              </Link>
             </div>
             <p className="text-gray-600 text-sm leading-relaxed">
               {item.description}
@@ -69,6 +48,57 @@ export const WritingsSection: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="pt-6 border-t border-gray-200/80 flex items-center justify-between text-sm">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`inline-flex items-center gap-1 transition-colors bg-transparent border-0 p-0 ${
+              currentPage === 1
+                ? 'text-gray-300 cursor-not-allowed'
+                : 'text-gray-600 hover:text-gray-900 cursor-pointer hover:underline'
+            }`}
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>prev</span>
+          </button>
+
+          <div className="flex items-center gap-2">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
+              const isActive = currentPage === pageNum;
+              return (
+                <button
+                  key={pageNum}
+                  onClick={() => handlePageChange(pageNum)}
+                  className={`w-7 h-7 rounded text-xs transition-colors cursor-pointer border ${
+                    isActive
+                      ? 'bg-gray-900 text-white border-gray-900 font-medium'
+                      : 'bg-transparent text-gray-600 border-transparent hover:border-gray-200 hover:text-gray-900'
+                  }`}
+                >
+                  {pageNum}
+                </button>
+              );
+            })}
+          </div>
+
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className={`inline-flex items-center gap-1 transition-colors bg-transparent border-0 p-0 ${
+              currentPage === totalPages
+                ? 'text-gray-300 cursor-not-allowed'
+                : 'text-gray-600 hover:text-gray-900 cursor-pointer hover:underline'
+            }`}
+          >
+            <span>next</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      )}
     </div>
   );
 };
+

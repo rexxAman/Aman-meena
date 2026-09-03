@@ -12,3 +12,21 @@ export interface Project {
   image?: string;
 }
 
+export interface WritingSectionBlock {
+  heading?: string;
+  paragraphs: string[];
+  bullets?: string[];
+}
+
+export interface Writing {
+  slug: string;
+  date: string;
+  readTime: string;
+  title: string;
+  description: string;
+  tags?: string[];
+  sections: WritingSectionBlock[];
+  takeaways?: string[];
+}
+
+
