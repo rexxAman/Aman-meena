@@ -29,7 +29,17 @@ export interface TimelineItem {
   link?: string;
 }
 
+export interface BookItem {
+  id: number;
+  title: string;
+  author: string;
+  status: string;
+  cover: string;
+  coverBg?: string;
+}
 
-
-
-
+export interface GoalItem {
+  id: number;
+  text: string;
+  done: boolean;
+}
