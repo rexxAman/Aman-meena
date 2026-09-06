@@ -3,13 +3,11 @@ export interface Project {
   title: string;
   description: string;
   longDescription?: string;
-  why: string;
-  architecture?: string[];
-  features?: string[];
-  tags: string[];
+  tags?: string[];
+  github?: string;
   link?: string;
-  github: string;
   image?: string;
+  [key: string]: any;
 }
 
 export interface Writing {

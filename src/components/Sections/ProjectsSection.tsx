@@ -25,7 +25,7 @@ export const ProjectsSection: React.FC = () => {
   const filteredProjects = selectedTag === 'all'
     ? PROJECTS
     : PROJECTS.filter((p) =>
-        p.tags.some((t) =>
+        p.tags?.some((t) =>
           t.toLowerCase().replace(/[^a-z0-9]/g, '') === selectedTag.toLowerCase().replace(/[^a-z0-9]/g, '')
         ) ||
         p.title.toLowerCase().includes(selectedTag.toLowerCase()) ||
