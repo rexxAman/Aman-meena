@@ -3,66 +3,60 @@ import { Project } from './types';
 export const PROJECTS: Project[] = [
   {
     slug: "labour-market-analysis",
-    title: "Quantitative analysis of labour market dynamics and wage distributions.",
-    description: "An exploratory data analysis and econometric modeling project investigating labor market dynamics, wage trends, and sectoral employment shifts.",
-    longDescription: "This project applies statistical modeling and data visualization to uncover macro and micro labor market trends, skill demand evolutions, and geographical employment distributions.",
-    sections: [
-      {
-        title: "Methodology & Analysis",
-        items: [
-          "Data Cleaning & Imputation: Pandas and NumPy pipelines handling missing data and outliers.",
-          "Exploratory Visualization: Statistical charts illustrating wage distributions and sector trends.",
-          "Econometric Modeling: Regression models analyzing correlation between credentials, location, and compensation."
-        ]
-      }
+    title: "Tracking labour market policy developments across peer countries using local LLMs.",
+    description: "An automated intelligence system that monitors and fetches news on labour market policy developments across peer countries, leveraging a local LLM to turn raw, unstructured extractions into meaningful analytical reports.",
+    longDescription: "This system automates the tracking and synthesis of labour market policy developments across peer countries. It continuously fetches international news updates, handles noisy or garbled web extractions, and uses a locally hosted LLM to parse and transform the raw content into structured, high-signal intelligence reports. Built with a focus on portability and ease of use, the pipeline is fully reusable at any time on any local machine without external API dependencies.",
+    features: [
+      "Automated news fetching focused on labour market policy developments across peer countries",
+      "Local LLM integration converting noisy and garbled web extractions into coherent, meaningful reports",
+      "Self-contained, highly portable architecture designed for effortless execution on any machine",
+      "Standardized data structuring for longitudinal policy comparisons and research insights"
     ],
-    tags: ["Python", "Data Science", "Pandas", "Data Visualization", "Economics"],
+    tags: ["Python", "Local LLM", "AI", "NLP", "Scraping", "Data Engineering"],
     github: "https://github.com/rexxAman/labour_market_analysis"
   },
   {
     slug: "news-tracking-system",
-    title: "News Tracking and Monitoring System",
-    description: "An automated Python pipeline that continuously monitors RSS feeds and news outlets, aggregates articles, and deduplicates coverage in real time.",
-    longDescription: "Designed for continuous data intelligence, this pipeline polls news sources, extracts article bodies, performs topic clustering, and stores timestamped events for downstream analysis.",
+    title: "Central Bank & Financial News Tracking System with Local LLM",
+    description: "An automated intelligence pipeline that ingests official XML/RSS feeds from global central banks and economic institutions, processes article text using a local Phi-3 LLM, and exports weekly structured Excel reports.",
+    longDescription: `An automated news tracking and intelligence system engineered to extract, normalize, and summarize weekly policy developments from premier central banks and international economic organizations.
+
+### Multi-Source Data Ingestion
+The system monitors official XML, RSS, and Atom feeds across premier monetary institutions—including the Federal Reserve, ECB, Bank of England, RBI, BIS, IMF, World Bank, and Financial Times. For portals with complex or non-standard architectures (e.g., OECD or IMF topics), an intelligent hybrid scraping fallback ensures unbroken coverage.
+
+### Local LLM Synthesis (Phi-3 Mini)
+Raw, noisy article extracts and policy speeches are distilled using an offline **Phi-3 Mini** model (\`temperature: 0.1\`, \`num_ctx: 4096\`). The local LLM strips out formatting noise, extracts key policy changes, interest rate commentary, and risk indicators, and generates concise, structured briefs without relying on cloud APIs.
+
+### SQLite Storage & Excel Reporting
+Ingested stories are timestamped, deduplicated, and stored in a local SQLite database (\`data/articles.db\`). The pipeline compiles weekly digests into an organized Excel report (\`AI_news_tracker.xlsx\`) formatted for clear visual inspection, executive tracking, and longitudinal analysis.
+
+\`\`\`yaml
+# Pipeline & Storage Configuration
+pipeline:
+  llm_model: "phi3:mini"
+  temperature: 0.1
+  num_predict: 512
+  num_ctx: 4096
+  snippet_chars: 500
+  max_article_words: 1000
+  batch_size: 10
+  max_article_age_days: 7
+
+storage:
+  db_path: "data/articles.db"
+  export_path: "AI_news_tracker.xlsx"
+\`\`\`
+`,
     features: [
-      "Multi-source RSS and article scraping with rate limiting and exponential backoff",
-      "Automated deduplication using MinHash and cosine similarity",
-      "Clean JSON schema output ready for LLM consumption"
+      "Multi-source ingestion tracking official XML, RSS, and Atom feeds from Fed, ECB, BoE, RBI, BIS, IMF, World Bank, and FT",
+      "Hybrid scraping and HTML fallback for dynamic, non-standard institutional portals (OECD, IMF)",
+      "Local LLM distillation using Phi-3 Mini to extract concise policy intelligence from lengthy transcripts and articles",
+      "SQLite storage (data/articles.db) for automated deduplication and historical article tracking",
+      "Automated weekly extraction with styled Excel export (AI_news_tracker.xlsx) for visual clarity and analysis"
     ],
-    tags: ["Python", "Web Scraping", "Data Engineering", "Automation", "NLP"],
-    github: "https://github.com/rexxAman/news-tracking-system-"
-  },
-  {
-    slug: "daily-scraper",
-    title: "Daily Web Extraction Framework",
-    description: "A lightweight and modular Python scraping framework engineered for reliable daily data harvesting with proxy rotation and rate limit handling.",
-    longDescription: "Daily Scraper automates the recurring extraction of structured data from dynamic websites, handling pagination, dynamic DOM loading, and export to CSV/JSON format.",
-    features: [
-      "Pluggable site scraping adapters with CSS/XPath selector definitions",
-      "Automatic retries, user-agent rotation, and anti-blocking strategies",
-      "Clean CSV and JSON export pipelines"
-    ],
-    tags: ["Python", "Web Scraping", "BeautifulSoup", "Automation"],
-    github: "https://github.com/rexxAman/Daily-scrapper"
-  },
-  {
-    slug: "bodo-ats-scorer",
-    title: "Algorithmic resume parser and ATS compatibility scoring engine.",
-    description: "A Python-based backend engine for parsing resume text, extracting key entities, and calculating rigorous ATS compatibility scores against industry rubrics.",
-    longDescription: "Bodo ATS Scorer provides the scoring intelligence behind resume evaluation. It utilizes rule-based NLP, regular expression heuristics, and semantic matching to evaluate formatting hygiene, keyword density, and structural integrity.",
-    sections: [
-      {
-        title: "Scoring Methodology",
-        content: "Evaluates formatting cleanliness (single column, parseable unicode characters, valid section headers) and semantic match against job description vocabularies using TF-IDF and dense embeddings."
-      }
-    ],
-    features: [
-      "Comprehensive ATS compliance grading across formatting, keywords, and length",
-      "Extraction of skills, job titles, education, and dates",
-      "Lightweight and embeddable Python microservice with FastAPI"
-    ],
-    tags: ["Python", "NLP", "Text Processing", "FastAPI", "Data Analysis"],
-    github: "https://github.com/rexxAman/Bodo-ats-scorer"
+    tags: ["Python", "Local LLM", "RSS", "SQLite", "Data Engineering", "Automation", "NLP"],
+    github: "https://github.com/rexxAman/news-tracking-system-",
+    image: "/images/news-tracking-system.jpeg"
   },
   {
     slug: "sukauto",
@@ -185,7 +179,8 @@ The interactive studio allows users to select style references (such as iconic a
       "Collaborative trip sharing and exportable PDF itineraries"
     ],
     tags: ["TypeScript", "Next.js", "AI Agents", "Tailwind CSS", "API Integration"],
-    github: "https://github.com/rexxAman/Skky"
+    github: "https://github.com/rexxAman/Skky",
+    image: "/images/skky.png"
   },
   {
     slug: "kojima",
