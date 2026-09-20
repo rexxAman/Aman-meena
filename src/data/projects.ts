@@ -13,7 +13,8 @@ export const PROJECTS: Project[] = [
       "Standardized data structuring for longitudinal policy comparisons and research insights"
     ],
     tags: ["Python", "Local LLM", "AI", "NLP", "Scraping", "Data Engineering"],
-    github: "https://github.com/rexxAman/labour_market_analysis"
+    github: "https://github.com/rexxAman/labour_market_analysis",
+    image: "/images/labout_market.png"
   },
   {
     slug: "news-tracking-system",

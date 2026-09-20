@@ -1,32 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { WRITINGS } from '../../data/writings';
-import { ArrowLeft, Heart } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 export const WritingDetailSection: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const writing = WRITINGS.find((w) => w.slug === slug);
 
-  const initialLikes = writing?.likes ?? 0;
-  const [liked, setLiked] = useState<boolean>(false);
-  const [likeCount, setLikeCount] = useState<number>(initialLikes);
-
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (writing) {
-      const stored = localStorage.getItem(`writing_liked_${writing.slug}`) === 'true';
-      setLiked(stored);
-      setLikeCount((writing.likes ?? 0) + (stored ? 1 : 0));
-    }
-  }, [slug, writing]);
-
-  const handleLike = () => {
-    if (!writing) return;
-    const nextLiked = !liked;
-    setLiked(nextLiked);
-    setLikeCount((prev) => (nextLiked ? prev + 1 : prev - 1));
-    localStorage.setItem(`writing_liked_${writing.slug}`, String(nextLiked));
-  };
+  }, [slug]);
 
   if (!writing) {
     return (
@@ -61,7 +44,7 @@ export const WritingDetailSection: React.FC = () => {
         </Link>
       </div>
 
-      {/* Main Head, Subtitle & Like Button */}
+      {/* Main Head & Subtitle */}
       <div className="space-y-4">
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
           {writing.title}
@@ -70,24 +53,6 @@ export const WritingDetailSection: React.FC = () => {
         <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
           {writing.description}
         </p>
-
-        {/* Like Button */}
-        <div>
-          <button
-            onClick={handleLike}
-            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs sm:text-sm transition-colors cursor-pointer ${
-              liked
-                ? 'border-red-300 bg-red-50 text-red-600'
-                : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
-            }`}
-            title="Like this writing"
-          >
-            <Heart
-              className={`w-3.5 h-3.5 ${liked ? 'fill-red-500 text-red-500' : 'text-gray-600'}`}
-            />
-            <span>{likeCount}</span>
-          </button>
-        </div>
       </div>
 
       {/* Optional Article Cover Image */}

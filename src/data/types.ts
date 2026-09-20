@@ -16,7 +16,6 @@ export interface Writing {
   readTime: string;
   title: string;
   description: string;
-  likes?: number;
   image?: string;
   paragraphs: string[];
 }
