@@ -196,7 +196,7 @@ export const ProjectDetailSection: React.FC = () => {
             alt={project.title}
             loading="lazy"
             decoding="async"
-            className="w-full h-auto max-h-[420px] object-cover object-center"
+            className="w-full h-auto"
           />
         </div>
       )}

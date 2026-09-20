@@ -2,6 +2,34 @@ import { Project } from './types';
 
 export const PROJECTS: Project[] = [
   {
+    slug: "setupforge",
+    title: "Build Your PC",
+    description: "A web application for planning, budgeting, and assembling productive workspaces and custom PC builds with real-time cost tracking and component compatibility hints.",
+    longDescription: `SetupForge is a comprehensive workspace planning and custom PC building tool designed to streamline the process of assembling productive setups.
+
+### Interactive Setup Checklist
+Add products like desks, ergonomic chairs, monitors, lighting, audio, peripherals, and cable management. Track product links, prices, quantity, priority, and purchase status (Wishlist, Ordered, Received). Live cost aggregation, categorized spending breakdown, and budget health alerts keep your workspace build on track.
+
+### Custom PC Builder Studio
+Select components including CPU, GPU, Motherboard, RAM, Storage, PSU, Cooler, and Case. Get real-time compatibility hints and estimated power consumption with PSU adequacy indicators. Curated PC presets like Developer Productivity, Creative Studio & AI, and Scandinavian Studio Aesthetic help you get started fast. One-click "Add PC Build into Checklist" syncs all parts and costs into your main workspace budget.
+
+### Smart Recommendations & Deal Search
+Battle-tested setup blueprints (Minimalist Developer, Creative Studio, High-Value Ergonomic) alongside instant Google, Amazon, and Reddit deal search launchers for any hardware or accessory.`,
+    features: [
+      "Interactive setup checklist with live cost aggregation and budget health alerts",
+      "Custom PC Builder Studio with component selection and real-time compatibility hints",
+      "Estimated power consumption with PSU adequacy indicator",
+      "Curated PC presets for Developer Productivity, Creative Studio & AI, and more",
+      "One-click Add PC Build into Checklist to sync parts and costs into workspace budget",
+      "Smart deal search launchers for Google, Amazon, and Reddit",
+      "Pre-Built Rigs showcase with tiered filtering and component breakdowns"
+    ],
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    github: "https://github.com/rexxAman/Build-your-Pc",
+    link: "https://build-your-pc-wheat.vercel.app/",
+    image: "/images/setupforge_studio.png"
+  },
+  {
     slug: "labour-market-analysis",
     title: "Tracking labour market policy developments across peer countries using local LLMs.",
     description: "An automated intelligence system that monitors and fetches news on labour market policy developments across peer countries, leveraging a local LLM to turn raw, unstructured extractions into meaningful analytical reports.",
@@ -144,8 +172,7 @@ Bodo features an open-source, AI-powered ATS scoring system engineered to evalua
       "Cloud sync and local draft storage with zero data loss"
     ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "Python", "Vercel"],
-    github: "https://github.com/rexxAman/Bodo",
-    image: "/images/bodo-hero.png"
+    github: "https://github.com/rexxAman/Bodo"
   },
   {
     slug: "botanical-merge",
