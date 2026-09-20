@@ -17,7 +17,7 @@ export const WRITINGS: Writing[] = [
 
     'As a developer, I think laptops are like your second girlfriend you can have.',  
 
-    'I have been using MacBook M5 Air for the last 6 months. I have a few cons and pros of MacBook M5. Pros: you get low latency in almost everything. Your apps boot faster. As you know, it runs on a Linux-based OS, which is lightweight, and everything is running on the cache.',
+    'I have been using MacBook M5 Air for the last 6 months. I have a few cons and pros of MacBook M5. Pros: you get low latency in almost everything. Your apps boot faster. It runs on a Unix-based OS, which is similar to Linux in how it works, lightweight, and everything is running on the cache.',
 
     'Cached files are faster to access compared to fetching them from the main external drive. Because of this, MacBooks are best for everyday light work if you are using system specs like 16GB RAM. But when you go for a heavy workload, this gives up compared to Windows laptops with the same 16GB RAM, but they should have a GPU with them. You can buy one in the same price range as a MacBook M5.',
 
