@@ -3,6 +3,12 @@ import { TimelineItem } from './types';
 export const TIMELINE_DATA: Record<string, TimelineItem[]> = {
   '2026': [
     {
+      id:19,
+      year: '2026',
+      title: 'Trip to Mumbai',
+      detail: 'Sept 2026 · Learn a life lesson.',
+    },
+    {
       id: 24,
       year: '2026',
       title: 'Completed Accenture Software Internship',
